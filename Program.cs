@@ -32,15 +32,19 @@ namespace SnakeLadder
         /// </summary>
         public void GamePlay()
         {
-            int diceRoll = random.Next(1, 7);
-            int options = random.Next(0, 3);
-
             ///Iterates till the player is reached at 100 position
             while (position >= 0 && position <= 100)
             {
+                int diceRoll = random.Next(1, 7);
+                int options = random.Next(0, 3);
+
                 if (options == LADDER)
                 {
                     position += diceRoll;
+                    if (position > 100)
+                    {
+                        position = position - diceRoll;
+                    }
                 }
                 else if (options == SNAKE)
                 {
