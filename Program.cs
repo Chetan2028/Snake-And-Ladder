@@ -28,34 +28,32 @@ namespace SnakeLadder
         }
 
         /// <summary>
-        /// Rolls the dice.
+        /// This method plays the game
         /// </summary>
-        public int RollDice()
+        public void GamePlay()
         {
             int diceRoll = random.Next(1, 7);
-            return diceRoll;
-        }
-
-        /// <summary>
-        /// Check for the options
-        /// </summary>
-        public void OptionCheck()
-        {
-            ///Checking for 3 options
             int options = random.Next(0, 3);
 
-            ///Checks for the conditon and assigns the positons
-            if (options == NO_PLAY)
+            ///Iterates till the player is reached at 100 position
+            while (position >= 0 && position <= 100)
             {
-                position += 0;
-            }
-            else if (options == LADDER)
-            {
-                position += RollDice();
-            }
-            else
-            {
-                position -= RollDice();
+                if (options == LADDER)
+                {
+                    position += diceRoll;
+                }
+                else if (options == SNAKE)
+                {
+                    position -= diceRoll;
+                    if (position < 0)
+                    {
+                        position = 0;
+                    }
+                }
+                else
+                {
+                    position += 0;
+                }
             }
         }
         /// <summary>
@@ -66,8 +64,7 @@ namespace SnakeLadder
         {
             Program program = new Program();
             program.InitalizeBoard();
-            program.RollDice();
-            program.OptionCheck();
+            program.GamePlay();
         }
     }
 }
