@@ -40,14 +40,19 @@ namespace SnakeLadder
             ///Iterates till the player is reached at 100 position
             while (position1 >= 0 && position1 <= 100 && position2 >= 0 && position2 <= 100)
             {
+                ///Generates the random number for dice roll
                 int diceRoll1 = random.Next(1, 7);
                 int diceRoll2 = random.Next(1, 7);
+                ///Generate the random number for options
                 int options = random.Next(0, 3);
 
+                ///Checks the condition of option and assigns the position
                 if (options == LADDER)
                 {
                     position1 += diceRoll1;
                     position2 += diceRoll2;
+                    ///Checks for the position
+                    ///If the position is greater than 100 then negate the dice roll
                     if (position1 > 100)
                     {
                         position1 = position1 - diceRoll1;
@@ -61,6 +66,8 @@ namespace SnakeLadder
                 {
                     position1 -= diceRoll1;
                     position2 -= diceRoll2;
+                    ///Checks for the position
+                    ///If the position is negative then assiginig position as zero
                     if (position1 < 0)
                     {
                         position1 = 0;
@@ -72,10 +79,11 @@ namespace SnakeLadder
                 }
                 else
                 {
+                    ///When there is no play then player is at same position
                     position1 += 0;
                     position2 += 0;
                 }
-                diceCount++; 
+                diceCount++;
 
                 Console.WriteLine("Dice Count for Player1  and Player2 : " + diceCount);
                 Console.WriteLine("The position of Player1  : " + position1);
