@@ -11,7 +11,7 @@ namespace SnakeLadder
         int position = 0;
 
         /// Creating an array which represents snake and ladder board.
-        static int[] gameBoard = new int[10];
+        static int[] gameBoard = new int[101];
 
         /// Creates a reference of Random Class
         Random random = new Random();
