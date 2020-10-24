@@ -35,37 +35,40 @@ namespace SnakeLadder
         /// <returns></returns>
         public void GamePlay()
         {
-            int diceCount = 0;
+            int diceCountForPlayer1 = 0;
+            int diceCountForPlayer2 = 0;
 
             ///Iterates till the player is reached at 100 position
             while (position1 >= 0 && position1 <= 100 && position2 >= 0 && position2 <= 100)
             {
                 ///Generates the random number for dice roll
-                int diceRoll1 = random.Next(1, 7);
-                int diceRoll2 = random.Next(1, 7);
+                int diceRollForPlayer1 = random.Next(1, 7);
+                Console.WriteLine("Player1 rolling the dice and got : " + diceRollForPlayer1);
+                int diceRollForPlayer2= random.Next(1, 7);
+                Console.WriteLine("Player2 rolling the dice and got : " + diceRollForPlayer2);
                 ///Generate the random number for options
                 int options = random.Next(0, 3);
 
                 ///Checks the condition of option and assigns the position
                 if (options == LADDER)
                 {
-                    position1 += diceRoll1;
-                    position2 += diceRoll2;
+                    position1 += diceRollForPlayer1;
+                    position2 += diceRollForPlayer2;
                     ///Checks for the position
                     ///If the position is greater than 100 then negate the dice roll
                     if (position1 > 100)
                     {
-                        position1 = position1 - diceRoll1;
+                        position1 = position1 - diceRollForPlayer1;
                     }
                     if (position2 > 100)
                     {
-                        position2 = position2 - diceRoll2;
+                        position2 = position2 - diceRollForPlayer2;
                     }
                 }
                 else if (options == SNAKE)
                 {
-                    position1 -= diceRoll1;
-                    position2 -= diceRoll2;
+                    position1 -= diceRollForPlayer1;
+                    position2 -= diceRollForPlayer2;
                     ///Checks for the position
                     ///If the position is negative then assiginig position as zero
                     if (position1 < 0)
@@ -83,9 +86,11 @@ namespace SnakeLadder
                     position1 += 0;
                     position2 += 0;
                 }
-                diceCount++;
+                diceCountForPlayer1++;
+                diceCountForPlayer2++;
 
-                Console.WriteLine("Dice Count for Player1  and Player2 : " + diceCount);
+                Console.WriteLine("Dice Count for Player1 is  " + diceCountForPlayer1);
+                Console.WriteLine("Dice Count for Player2 is  " + diceCountForPlayer2);
                 Console.WriteLine("The position of Player1  : " + position1);
                 Console.WriteLine("The position of Player2  : " + position2);
 
@@ -101,7 +106,8 @@ namespace SnakeLadder
                     break;
                 }
             }
-            Console.WriteLine("Total dice count of Player1 and Player2 is : " + diceCount);
+            Console.WriteLine("Total dice count of Player1 is  " + diceCountForPlayer1);
+            Console.WriteLine("Total dice count of Player2 is  " + diceCountForPlayer2);
         }
         /// <summary>
         /// Defines the entry point of the application.
