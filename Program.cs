@@ -24,7 +24,7 @@ namespace SnakeLadder
         public void InitalizeBoard()
         {
             for (int index = 0; index < gameBoard.Length; index++)
-            {
+            {    
                 gameBoard[index] = index;
             }
         }
